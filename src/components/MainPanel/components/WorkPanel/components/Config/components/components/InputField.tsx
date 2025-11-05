@@ -1,11 +1,13 @@
 import React from 'react';
 
-export default function Input({
+export default function InputField({
     onChange,
     value,
+    placeholder = '',
 }: {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     value: string;
+    placeholder?: string;
 }) {
     return (
         <div className="w-full p-[5px] rounded-s-xs">
@@ -15,6 +17,7 @@ export default function Input({
                     font-[Roboto] font-normal text-[11px] leading-[150%] tracking-[2%]
                 "
                 type="input"
+                placeholder={placeholder}
                 value={value}
                 onChange={onChange}
             />

@@ -4,11 +4,11 @@ import defaultIcon from '/src/assets/icons/defaultWidgetIcon.svg';
 
 const WIDGETS_DATA = [
     {
-        title: 'Headline',
+        title: 'HeadlineWidget',
         icon: headlineIcon,
     },
     {
-        title: 'Paragraph',
+        title: 'ParagraphWidget',
         icon: paragraphIcon,
     },
     {
