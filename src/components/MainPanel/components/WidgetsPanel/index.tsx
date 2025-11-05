@@ -35,7 +35,7 @@ function createWidget({
             key={key ?? title}
             className="
                 grid gap-2.5 justify-center justify-items-center
-                w-[100px] h-[83px] rounded-md bg-blue-100 p-[15px]
+                w-[100px] h-[83px] rounded-md bg-[#F6F9FE] p-[15px]
                 font-[Roboto] font-normal text-[12px] tracking-[2%]
             "
         >
@@ -49,7 +49,10 @@ export default function WidgetsPanel() {
     const widgets = WIDGETS_DATA.map((widget) => createWidget(widget));
 
     return (
-        <div className="flex gap-2.5 flex-wrap content-baseline p-[30px] bg-white h-full w-[270px]">
+        <div
+            className="flex gap-2.5 justify-items-stretch flex-wrap content-baseline py-[30px] px-[28px]
+            bg-white h-full w-[270px] border-r border-[#e4e6f1]"
+        >
             {widgets}
         </div>
     );
