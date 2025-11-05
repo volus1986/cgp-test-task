@@ -1,6 +1,6 @@
-import headlineIcon from './icons/headlineIcon.svg';
-import paragraphIcon from './icons/paragraphIcon.svg';
-import defaultIcon from './icons/defaultIcon.svg';
+import headlineIcon from '/src/assets/icons/headlineWidgetIcon.svg';
+import paragraphIcon from '/src/assets/icons/paragraphWidgetIcon.svg';
+import defaultIcon from '/src/assets/icons/defaultWidgetIcon.svg';
 
 const WIDGETS_DATA = [
     {
@@ -21,9 +21,18 @@ const WIDGETS_DATA = [
     },
 ];
 
-function createWidget({ icon, title }: { icon: string; title: string }) {
+function createWidget({
+    icon,
+    title,
+    key,
+}: {
+    icon: string;
+    title: string;
+    key?: string;
+}) {
     return (
         <div
+            key={key ?? title}
             className="
                 grid gap-2.5 justify-center justify-items-center
                 w-[100px] h-[83px] rounded-md bg-blue-100 p-[15px]
@@ -40,7 +49,7 @@ export default function WidgetsPanel() {
     const widgets = WIDGETS_DATA.map((widget) => createWidget(widget));
 
     return (
-        <div className="flex gap-2.5 flex-wrap content-baseline p-[30px] max-w-[270px] min-w-[160px] bg-white h-full">
+        <div className="flex gap-2.5 flex-wrap content-baseline p-[30px] bg-white h-full w-[270px]">
             {widgets}
         </div>
     );
