@@ -22,6 +22,7 @@ export default function ButtonWidget({
         return (
             <InputField
                 value={value}
+                onClick={(e) => e.stopPropagation()}
                 onChange={handleChange}
                 placeholder="Button text"
             />

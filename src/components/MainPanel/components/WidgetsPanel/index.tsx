@@ -1,52 +1,76 @@
 import headlineIcon from '/src/assets/icons/headlineWidgetIcon.svg';
 import paragraphIcon from '/src/assets/icons/paragraphWidgetIcon.svg';
 import defaultIcon from '/src/assets/icons/defaultWidgetIcon.svg';
+import { useWidgets, WidgetTypes } from '../../../../store/useWidgets.ts';
 
 const WIDGETS_DATA = [
     {
-        title: 'HeadlineWidget',
+        type: WidgetTypes.headline,
+        title: 'Headline',
         icon: headlineIcon,
     },
     {
-        title: 'ParagraphWidget',
+        type: WidgetTypes.paragraph,
+        title: 'Paragraph',
         icon: paragraphIcon,
     },
     {
+        type: WidgetTypes.button,
         title: 'Button',
         icon: defaultIcon,
     },
     {
+        type: WidgetTypes.image,
         title: 'Image',
         icon: defaultIcon,
     },
 ];
 
-function createWidget({
-    icon,
-    title,
-    key,
-}: {
-    icon: string;
-    title: string;
-    key?: string;
-}) {
-    return (
-        <div
-            key={key ?? title}
-            className="
+export default function WidgetsPanel() {
+    const widgetStore = useWidgets();
+
+    const handleWidgetClick = (type: WidgetTypes) => {
+        widgetStore.addWidget({
+            type,
+            value: '',
+        });
+    };
+
+    function renderWidget(
+        {
+            icon,
+            title,
+            type,
+        }: {
+            icon: string;
+            title: string;
+            type: WidgetTypes;
+        },
+        index: number,
+    ) {
+        return (
+            <div
+                key={index}
+                className="
                 grid gap-2.5 justify-center justify-items-center
                 w-[100px] h-[83px] rounded-md bg-[#F6F9FE] p-[15px]
                 font-[Roboto] font-normal text-[12px] tracking-[2%]
+                cursor-pointer
             "
-        >
-            <img className="block w-[21px] h-[21px]" src={icon} alt={title} />
-            <div>{title}</div>
-        </div>
+                onClick={() => handleWidgetClick(type)}
+            >
+                <img
+                    className="block w-[21px] h-[21px]"
+                    src={icon}
+                    alt={title}
+                />
+                <div>{title}</div>
+            </div>
+        );
+    }
+    const widgets = WIDGETS_DATA.map((widget, index) =>
+        renderWidget(widget, index),
     );
-}
-
-export default function WidgetsPanel() {
-    const widgets = WIDGETS_DATA.map((widget) => createWidget(widget));
 
     return (
         <div

@@ -20,7 +20,13 @@ export default function ParagraphWidget({
     const renderInput = () => {
         if (!isActive) return null;
 
-        return <TextAreaField value={value} onChange={handleChange} />;
+        return (
+            <TextAreaField
+                value={value}
+                onClick={(e) => e.stopPropagation()}
+                onChange={handleChange}
+            />
+        );
     };
 
     return (

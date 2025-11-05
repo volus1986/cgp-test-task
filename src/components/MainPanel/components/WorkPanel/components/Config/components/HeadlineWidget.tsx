@@ -22,6 +22,7 @@ export default function HeadlineWidget({
         return (
             <InputField
                 value={value}
+                onClick={(e) => e.stopPropagation()}
                 onChange={handleChange}
                 placeholder="Headline text"
             />

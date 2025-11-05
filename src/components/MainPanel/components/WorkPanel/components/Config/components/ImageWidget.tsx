@@ -24,6 +24,7 @@ export default function ImageWidget({
             <InputField
                 value={value}
                 onChange={handleChange}
+                onClick={(e) => e.stopPropagation()}
                 placeholder="Paste url to image"
             />
         );

@@ -35,6 +35,7 @@ export default function Config() {
 
     const handleComponentClick = (index: number) => {
         setActiveIndex((prev) => (prev === index ? -1 : index));
+        // setActiveIndex(index);
     };
 
     const components = widgets.widgets.map((widget, index) => {
@@ -48,6 +49,7 @@ export default function Config() {
                 grid justify-items-center gap-2.5
                 w-full rounded-md { bg-white p-[15px]}
                 font-[Roboto] font-normal text-[12px] tracking-[2%]
+                cursor-pointer
             "
                 onClick={() => handleComponentClick(index)}
             >

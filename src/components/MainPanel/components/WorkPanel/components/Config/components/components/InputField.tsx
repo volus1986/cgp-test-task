@@ -1,11 +1,13 @@
 import React from 'react';
 
 export default function InputField({
+    onClick,
     onChange,
     value,
     placeholder = '',
 }: {
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     value: string;
     placeholder?: string;
 }) {
@@ -19,6 +21,7 @@ export default function InputField({
                 type="input"
                 placeholder={placeholder}
                 value={value}
+                onClick={onClick}
                 onChange={onChange}
             />
         </div>
