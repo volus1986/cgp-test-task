@@ -17,12 +17,28 @@ type State = {
     moveWidget: (index: number, direction: 'up' | 'down') => void;
     addWidget: (widget: Widget) => void;
     removeWidget: (index: number) => void;
-    updateWidget: (index: number, widget: Widget) => void;
+    updateWidget: (index: number, value: string) => void;
     copyWidget: (index: number) => void;
 };
 
+const testWidgets: Widget[] = [
+    // todo: only for test
+    {
+        type: WidgetTypes.headline,
+        value: 'qwerty',
+    },
+    {
+        type: WidgetTypes.headline,
+        value: '12345',
+    },
+    {
+        type: WidgetTypes.headline,
+        value: '67890',
+    },
+];
+
 export const useWidgets = create<State>((set) => ({
-    widgets: [],
+    widgets: [...testWidgets],
     moveWidget: (index, direction) =>
         set((state) => {
             const widgets = [...state.widgets];
@@ -48,10 +64,10 @@ export const useWidgets = create<State>((set) => ({
             widgets: state.widgets.filter((_, i) => i !== index),
         })),
 
-    updateWidget: (i, widget) =>
+    updateWidget: (i, value) =>
         set((state) => {
             const widgets = [...state.widgets];
-            widgets[i] = widget;
+            widgets[i].value = value;
             return { widgets };
         }),
 
