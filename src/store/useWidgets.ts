@@ -21,30 +21,8 @@ type State = {
     copyWidget: (index: number) => void;
 };
 
-const testWidgets: Widget[] = [
-    // todo: only for test
-    {
-        type: WidgetTypes.image,
-        value: 'https://upload.wikimedia.org/wikipedia/commons/c/c8/Altja_j%C3%B5gi_Lahemaal.jpg',
-    },
-    {
-        type: WidgetTypes.headline,
-        value: 'A legendary cap set that feels like new',
-    },
-    {
-        type: WidgetTypes.paragraph,
-        value: `Prompt your customer to revisit your store by showing them the products they left behind. Consider offering them a coupon code to close the deal.
-Using the "Insert" panel on the right, drag and drop 
-the Abandoned Cart element onto the page below.`,
-    },
-    {
-        type: WidgetTypes.button,
-        value: 'Register now',
-    },
-];
-
 export const useWidgets = create<State>((set) => ({
-    widgets: [...testWidgets],
+    widgets: [],
     moveWidget: (index, direction) =>
         set((state) => {
             const widgets = [...state.widgets];
