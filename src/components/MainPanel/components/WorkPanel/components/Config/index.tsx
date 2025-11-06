@@ -42,8 +42,8 @@ export default function Config() {
                 key={index}
                 className={`
                 relative p-[15px]
-                w-full rounded-md
-                font-[Roboto] font-normal text-[12px] tracking-[2%]
+                w-full rounded-md 
+                font-[Roboto] font-normal text-[12px] tracking-[0.275px] text-[#252A32]
                 ${index === activeIndex ? 'bg-[#D9E7FF]' : 'bg-white'}
             `}
             >

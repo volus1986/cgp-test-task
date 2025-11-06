@@ -55,23 +55,17 @@ export default function WidgetsPanel() {
                 grid gap-2.5 justify-center justify-items-center
                 w-[100px] h-[83px]
                 rounded-md bg-[#F6F9FE] p-[15px]
-                font-[Roboto] font-normal text-[12px] tracking-[2%]
+                font-[Roboto] font-normal text-[12px] tracking-[0.275px]
                 cursor-pointer overflow-y-auto
             "
                 onClick={() => handleWidgetClick(type)}
             >
-                <img
-                    className="block w-[21px] h-[21px]"
-                    src={icon}
-                    alt={title}
-                />
+                <img className="block w-[21px] h-[21px]" src={icon} alt={title} />
                 <div>{title}</div>
             </div>
         );
     }
-    const widgets = WIDGETS_DATA.map((widget, index) =>
-        renderWidget(widget, index),
-    );
+    const widgets = WIDGETS_DATA.map((widget, index) => renderWidget(widget, index));
 
     return (
         <div
