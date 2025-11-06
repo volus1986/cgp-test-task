@@ -66,7 +66,7 @@ export default function WidgetsPanel() {
                 draggable
                 onDragStart={(e) => handleDragStart(e, type)}
             >
-                <img className="block w-[21px] h-[21px]" src={icon} alt={title} />
+                <img className="block w-[21px] h-[21px]" src={icon} alt={title} draggable={false} />
                 <div>{title}</div>
             </div>
         );
