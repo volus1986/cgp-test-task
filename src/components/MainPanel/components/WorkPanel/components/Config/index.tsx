@@ -9,6 +9,7 @@ import ParagraphWidget from './components/ParagraphWidget.tsx';
 import HeadlineWidget from './components/HeadlineWidget.tsx';
 import ButtonWidget from './components/ButtonWidget.tsx';
 import ImageWidget from './components/ImageWidget.tsx';
+import Control from './components/Control';
 
 type WidgetComponentProps = {
     index: number;
@@ -45,19 +46,29 @@ export default function Config() {
         return (
             <div
                 className={`
-                grid justify-items-center gap-2.5 p-[15px]
+                relative p-[15px]
                 w-full rounded-md
                 font-[Roboto] font-normal text-[12px] tracking-[2%]
-                cursor-pointer
                 ${index === activeIndex ? 'bg-[#D9E7FF]' : 'bg-white'}
             `}
-                onClick={() => handleComponentClick(index)}
             >
-                <Component
-                    index={index}
-                    value={widget.value}
-                    isActive={index === activeIndex}
-                />
+                {index === activeIndex && (
+                    <Control
+                        index={index}
+                        activeIndexSetter={handleComponentClick}
+                    />
+                )}
+
+                <div
+                    className="grid justify-items-center gap-2.5 cursor-pointer"
+                    onClick={() => handleComponentClick(index)}
+                >
+                    <Component
+                        index={index}
+                        value={widget.value}
+                        isActive={index === activeIndex}
+                    />
+                </div>
             </div>
         );
     });

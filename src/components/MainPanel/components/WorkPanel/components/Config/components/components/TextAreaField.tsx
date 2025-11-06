@@ -10,7 +10,7 @@ export default function TextAreaField({
     value: string;
 }) {
     return (
-        <div className="w-full p-[5px] rounded-s-xs" onClick={onClick}>
+        <div className="w-full p-[5px] rounded-s-xs bg-white" onClick={onClick}>
             <textarea
                 className="
                     w-full border border-[#e4e6f1] rounded-s-xs p-[5px]
