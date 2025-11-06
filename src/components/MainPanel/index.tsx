@@ -3,7 +3,7 @@ import WorkPanel from './components/WorkPanel';
 
 export default function MainPanel() {
     return (
-        <div className="flex w-full">
+        <div className="flex w-full overflow-y-hidden">
             <WidgetsPanel />
             <WorkPanel />
         </div>

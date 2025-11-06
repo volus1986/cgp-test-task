@@ -53,9 +53,10 @@ export default function WidgetsPanel() {
                 key={index}
                 className="
                 grid gap-2.5 justify-center justify-items-center
-                w-[100px] h-[83px] rounded-md bg-[#F6F9FE] p-[15px]
+                w-[100px] h-[83px]
+                rounded-md bg-[#F6F9FE] p-[15px]
                 font-[Roboto] font-normal text-[12px] tracking-[2%]
-                cursor-pointer
+                cursor-pointer overflow-y-auto
             "
                 onClick={() => handleWidgetClick(type)}
             >

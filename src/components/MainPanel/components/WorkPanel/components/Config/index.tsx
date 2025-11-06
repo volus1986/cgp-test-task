@@ -78,7 +78,8 @@ export default function Config() {
             className="
             grid gap-[15px] w-[538px] grid-flow-row auto-rows-min
             py-[25px] px-[30px]
-            bg-[#f5f5fc]"
+            bg-[#f5f5fc]
+            overflow-y-auto"
         >
             {components}
         </div>
