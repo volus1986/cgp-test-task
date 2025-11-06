@@ -1,9 +1,8 @@
-import paragraphIcon from '/src/assets/icons/paragraphWidgetIcon.svg';
+import headlineIcon from '/src/assets/icons/headlineWidgetIcon.svg';
+import InputField from './components/InputField.tsx';
 import React from 'react';
 import { useWidgets } from '../../../../../../../store/useWidgets.ts';
-import TextAreaField from './components/TextAreaField.tsx';
-
-export default function ParagraphWidget({
+export default function HeadlineWidgetConfig({
     index,
     value,
     isActive,
@@ -13,7 +12,7 @@ export default function ParagraphWidget({
     isActive: boolean;
 }) {
     const widgets = useWidgets();
-    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         widgets.updateWidget(index, e.target.value);
     };
 
@@ -21,10 +20,11 @@ export default function ParagraphWidget({
         if (!isActive) return null;
 
         return (
-            <TextAreaField
+            <InputField
                 value={value}
                 onClick={(e) => e.stopPropagation()}
                 onChange={handleChange}
+                placeholder="Headline text"
             />
         );
     };
@@ -33,10 +33,10 @@ export default function ParagraphWidget({
         <>
             <img
                 className="block w-[21px] h-[21px]"
-                src={paragraphIcon}
-                alt="paragraph icon"
+                src={headlineIcon}
+                alt="headline icon"
             />
-            <div>Paragraph</div>
+            <div>Headline</div>
             {renderInput()}
         </>
     );

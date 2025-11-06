@@ -1,8 +1,9 @@
-import buttonIcon from '/src/assets/icons/defaultWidgetIcon.svg';
+import defaultIcon from '/src/assets/icons/defaultWidgetIcon.svg';
 import InputField from './components/InputField.tsx';
 import React from 'react';
 import { useWidgets } from '../../../../../../../store/useWidgets.ts';
-export default function ButtonWidget({
+
+export default function ImageWidgetConfig({
     index,
     value,
     isActive,
@@ -22,9 +23,9 @@ export default function ButtonWidget({
         return (
             <InputField
                 value={value}
-                onClick={(e) => e.stopPropagation()}
                 onChange={handleChange}
-                placeholder="Button text"
+                onClick={(e) => e.stopPropagation()}
+                placeholder="Paste url to image"
             />
         );
     };
@@ -33,10 +34,10 @@ export default function ButtonWidget({
         <>
             <img
                 className="block w-[21px] h-[21px]"
-                src={buttonIcon}
-                alt="Button icon"
+                src={defaultIcon}
+                alt="image icon"
             />
-            <div>Button</div>
+            <div>Image</div>
             {renderInput()}
         </>
     );

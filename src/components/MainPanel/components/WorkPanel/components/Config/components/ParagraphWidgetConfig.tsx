@@ -1,9 +1,9 @@
-import defaultIcon from '/src/assets/icons/defaultWidgetIcon.svg';
-import InputField from './components/InputField.tsx';
+import paragraphIcon from '/src/assets/icons/paragraphWidgetIcon.svg';
 import React from 'react';
 import { useWidgets } from '../../../../../../../store/useWidgets.ts';
+import TextAreaField from './components/TextAreaField.tsx';
 
-export default function ImageWidget({
+export default function ParagraphWidgetConfig({
     index,
     value,
     isActive,
@@ -13,7 +13,7 @@ export default function ImageWidget({
     isActive: boolean;
 }) {
     const widgets = useWidgets();
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         widgets.updateWidget(index, e.target.value);
     };
 
@@ -21,11 +21,10 @@ export default function ImageWidget({
         if (!isActive) return null;
 
         return (
-            <InputField
+            <TextAreaField
                 value={value}
-                onChange={handleChange}
                 onClick={(e) => e.stopPropagation()}
-                placeholder="Paste url to image"
+                onChange={handleChange}
             />
         );
     };
@@ -34,10 +33,10 @@ export default function ImageWidget({
         <>
             <img
                 className="block w-[21px] h-[21px]"
-                src={defaultIcon}
-                alt="image icon"
+                src={paragraphIcon}
+                alt="paragraph icon"
             />
-            <div>Image</div>
+            <div>Paragraph</div>
             {renderInput()}
         </>
     );

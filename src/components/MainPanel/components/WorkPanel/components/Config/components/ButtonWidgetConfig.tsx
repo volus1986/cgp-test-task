@@ -1,8 +1,9 @@
-import headlineIcon from '/src/assets/icons/headlineWidgetIcon.svg';
+import buttonIcon from '/src/assets/icons/defaultWidgetIcon.svg';
 import InputField from './components/InputField.tsx';
 import React from 'react';
 import { useWidgets } from '../../../../../../../store/useWidgets.ts';
-export default function HeadlineWidget({
+
+export default function ButtonWidgetConfig({
     index,
     value,
     isActive,
@@ -24,19 +25,15 @@ export default function HeadlineWidget({
                 value={value}
                 onClick={(e) => e.stopPropagation()}
                 onChange={handleChange}
-                placeholder="Headline text"
+                placeholder="Button text"
             />
         );
     };
 
     return (
         <>
-            <img
-                className="block w-[21px] h-[21px]"
-                src={headlineIcon}
-                alt="headline icon"
-            />
-            <div>Headline</div>
+            <img className="block w-[21px] h-[21px]" src={buttonIcon} alt="Button icon" />
+            <div>Button</div>
             {renderInput()}
         </>
     );

@@ -1,14 +1,10 @@
-import {
-    useWidgets,
-    type Widget,
-    WidgetTypes,
-} from '../../../../../../store/useWidgets.ts';
+import { useWidgets, type Widget, WidgetTypes } from '../../../../../../store/useWidgets.ts';
 
 import React, { type ComponentType } from 'react';
-import ParagraphWidget from './components/ParagraphWidget.tsx';
-import HeadlineWidget from './components/HeadlineWidget.tsx';
-import ButtonWidget from './components/ButtonWidget.tsx';
-import ImageWidget from './components/ImageWidget.tsx';
+import ParagraphWidgetConfig from './components/ParagraphWidgetConfig.tsx';
+import HeadlineWidgetConfig from './components/HeadlineWidgetConfig.tsx';
+import ButtonWidgetConfig from './components/ButtonWidgetConfig.tsx';
+import ImageWidgetConfig from './components/ImageWidgetConfig.tsx';
 import Control from './components/Control';
 
 type WidgetComponentProps = {
@@ -18,13 +14,11 @@ type WidgetComponentProps = {
 };
 
 function getWidgetComponent(widget: Widget) {
-    const components: Partial<
-        Record<WidgetTypes, ComponentType<WidgetComponentProps>>
-    > = {
-        [WidgetTypes.headline]: HeadlineWidget,
-        [WidgetTypes.paragraph]: ParagraphWidget,
-        [WidgetTypes.button]: ButtonWidget,
-        [WidgetTypes.image]: ImageWidget,
+    const components: Partial<Record<WidgetTypes, ComponentType<WidgetComponentProps>>> = {
+        [WidgetTypes.headline]: HeadlineWidgetConfig,
+        [WidgetTypes.paragraph]: ParagraphWidgetConfig,
+        [WidgetTypes.button]: ButtonWidgetConfig,
+        [WidgetTypes.image]: ImageWidgetConfig,
     };
 
     return components[widget.type];
@@ -45,6 +39,7 @@ export default function Config() {
 
         return (
             <div
+                key={index}
                 className={`
                 relative p-[15px]
                 w-full rounded-md
@@ -52,22 +47,13 @@ export default function Config() {
                 ${index === activeIndex ? 'bg-[#D9E7FF]' : 'bg-white'}
             `}
             >
-                {index === activeIndex && (
-                    <Control
-                        index={index}
-                        activeIndexSetter={handleComponentClick}
-                    />
-                )}
+                {index === activeIndex && <Control index={index} activeIndexSetter={handleComponentClick} />}
 
                 <div
                     className="grid justify-items-center gap-2.5 cursor-pointer"
                     onClick={() => handleComponentClick(index)}
                 >
-                    <Component
-                        index={index}
-                        value={widget.value}
-                        isActive={index === activeIndex}
-                    />
+                    <Component index={index} value={widget.value} isActive={index === activeIndex} />
                 </div>
             </div>
         );
