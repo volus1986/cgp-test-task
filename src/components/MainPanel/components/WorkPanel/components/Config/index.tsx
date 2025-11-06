@@ -35,7 +35,6 @@ export default function Config() {
 
     const handleComponentClick = (index: number) => {
         setActiveIndex((prev) => (prev === index ? -1 : index));
-        // setActiveIndex(index);
     };
 
     const components = widgets.widgets.map((widget, index) => {
@@ -45,12 +44,13 @@ export default function Config() {
 
         return (
             <div
-                className="
-                grid justify-items-center gap-2.5
-                w-full rounded-md { bg-white p-[15px]}
+                className={`
+                grid justify-items-center gap-2.5 p-[15px]
+                w-full rounded-md
                 font-[Roboto] font-normal text-[12px] tracking-[2%]
                 cursor-pointer
-            "
+                ${index === activeIndex ? 'bg-[#D9E7FF]' : 'bg-white'}
+            `}
                 onClick={() => handleComponentClick(index)}
             >
                 <Component
