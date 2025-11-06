@@ -32,6 +32,20 @@ export default function Config() {
         setActiveIndex((prev) => (prev === index ? -1 : index));
     };
 
+    const handleDrop = (e: React.DragEvent) => {
+        e.preventDefault();
+        const data = e.dataTransfer.getData('widgetType') as WidgetTypes;
+
+        if (!data) return;
+
+        widgets.addWidget({
+            type: data,
+            value: '',
+        });
+
+        setActiveIndex(widgets.widgets.length);
+    };
+
     const components = widgets.widgets.map((widget, index) => {
         const Component = getWidgetComponent(widget);
 
@@ -41,11 +55,11 @@ export default function Config() {
             <div
                 key={index}
                 className={`
-                relative p-[15px]
-                w-full rounded-md 
-                font-[Roboto] font-normal text-[12px] tracking-[0.275px] text-[#252A32]
-                ${index === activeIndex ? 'bg-[#D9E7FF]' : 'bg-white'}
-            `}
+                    relative p-[15px]
+                    w-full rounded-md 
+                    font-[Roboto] font-normal text-[12px] tracking-[0.275px] text-[#252A32]
+                    ${index === activeIndex ? 'bg-[#D9E7FF]' : 'bg-white'}
+                `}
             >
                 {index === activeIndex && <Control index={index} activeIndexSetter={handleComponentClick} />}
 
@@ -66,6 +80,8 @@ export default function Config() {
             py-[25px] px-[30px]
             bg-[#f5f5fc]
             overflow-y-auto"
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={handleDrop}
         >
             {components}
         </div>

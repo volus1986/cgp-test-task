@@ -36,6 +36,10 @@ export default function WidgetsPanel() {
         });
     };
 
+    const handleDragStart = (e: React.DragEvent, type: WidgetTypes) => {
+        e.dataTransfer.setData('widgetType', type);
+    };
+
     function renderWidget(
         {
             icon,
@@ -59,6 +63,8 @@ export default function WidgetsPanel() {
                 cursor-pointer overflow-y-auto
             "
                 onClick={() => handleWidgetClick(type)}
+                draggable
+                onDragStart={(e) => handleDragStart(e, type)}
             >
                 <img className="block w-[21px] h-[21px]" src={icon} alt={title} />
                 <div>{title}</div>
