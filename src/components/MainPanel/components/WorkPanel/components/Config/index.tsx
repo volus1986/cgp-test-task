@@ -53,7 +53,7 @@ export default function Config() {
 
         return (
             <div
-                key={index}
+                key={widget.id}
                 className={`
                     relative p-[15px]
                     w-full rounded-md 

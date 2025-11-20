@@ -24,13 +24,13 @@ function getPreviewWidgetComponent(widget: Widget) {
 export default function Preview() {
     const widgets = useWidgets();
 
-    const components = widgets.widgets.map((widget, index) => {
+    const components = widgets.widgets.map((widget) => {
         const Component = getPreviewWidgetComponent(widget);
 
         if (!Component) return null;
 
         return (
-            <div key={index} className="flex justify-center">
+            <div key={widget.id} className="flex justify-center">
                 <Component value={widget.value} />
             </div>
         );

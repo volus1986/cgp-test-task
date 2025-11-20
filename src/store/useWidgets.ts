@@ -8,6 +8,7 @@ export enum WidgetTypes {
 }
 
 export type Widget = {
+    id: number | string;
     type: WidgetTypes;
     value: string;
 };
@@ -15,7 +16,7 @@ export type Widget = {
 type State = {
     widgets: Widget[];
     moveWidget: (index: number, direction: 'up' | 'down') => void;
-    addWidget: (widget: Widget) => void;
+    addWidget: (widget: Omit<Widget, 'id'>) => void;
     removeWidget: (index: number) => void;
     updateWidget: (index: number, value: string) => void;
     copyWidget: (index: number) => void;
@@ -35,10 +36,16 @@ export const useWidgets = create<State>((set) => ({
             return { widgets: widgets };
         }),
 
-    addWidget: (widget) =>
+    addWidget: (widget) => {
+        const newWidget: Widget = {
+            id: crypto.randomUUID(),
+            ...widget,
+        };
+
         set((state) => ({
-            widgets: [...state.widgets, widget],
-        })),
+            widgets: [...state.widgets, newWidget],
+        }));
+    },
 
     removeWidget: (index) =>
         set((state) => ({
